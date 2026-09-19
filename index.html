@@ -1,229 +1,1122 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Learn & Play</title>
+<title>Learn & Play</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f8ff;
-            color: #222;
-        }
+<style>
 
-        header {
-            background: #4f46e5;
-            color: white;
-            text-align: center;
-            padding: 45px 20px;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f8ff;
+    color: #222;
+}
 
-        header h1 {
-            font-size: 45px;
-            margin: 0;
-        }
+header {
+    background: #4f46e5;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
 
-        header p {
-            font-size: 20px;
-        }
+header h1 {
+    font-size: 45px;
+    margin: 0;
+}
 
-        nav {
-            background: white;
-            text-align: center;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+header p {
+    font-size: 20px;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #4f46e5;
-            font-weight: bold;
-            margin: 0 15px;
-        }
+nav {
+    background: white;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 35px 20px;
-        }
+nav a {
+    text-decoration: none;
+    color: #4f46e5;
+    font-weight: bold;
+    margin: 0 15px;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 25px;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: 0.2s;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
 
-        .card .emoji {
-            font-size: 50px;
-        }
+.card:hover {
+    transform: translateY(-5px);
+}
 
-        .card h3 {
-            font-size: 22px;
-        }
+.emoji {
+    font-size: 50px;
+}
 
-        .button {
-            display: inline-block;
-            background: #4f46e5;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.card h3 {
+    font-size: 22px;
+}
 
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
-    </style>
+.button {
+    display: inline-block;
+    background: #4f46e5;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background: #3730a3;
+}
+
+.game {
+    display: none;
+    background: white;
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.game h2 {
+    font-size: 32px;
+}
+
+.question {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.answer-input {
+    padding: 12px;
+    font-size: 20px;
+    border: 2px solid #4f46e5;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+    max-width: 450px;
+    margin: 20px auto;
+}
+
+.answer-button {
+    padding: 14px;
+    border: 2px solid #4f46e5;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.answer-button:hover {
+    background: #eef2ff;
+}
+
+.result {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    min-height: 25px;
+}
+
+.score {
+    color: #4f46e5;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.back {
+    background: #555;
+    margin-top: 15px;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <header>
-        <h1>🌟 Learn & Play 🌟</h1>
-        <p>Learn something new. Play something fun!</p>
-    </header>
+<header>
 
-    <nav>
-        <a href="#games">🎮 Games</a>
-        <a href="#videos">🎬 Videos</a>
-        <a href="#subjects">📚 Subjects</a>
-    </nav>
+<h1>🌟 Learn & Play 🌟</h1>
 
-    <main class="container">
+<p>Learn something new. Play something fun!</p>
 
-        <section id="games">
-            <h2 class="section-title">🎮 Educational Games</h2>
+</header>
 
-            <div class="cards">
+<nav>
 
-                <div class="card">
-                    <div class="emoji">🧮</div>
-                    <h3>Math Challenge</h3>
-                    <p>Test your maths skills!</p>
-                    <a class="button" href="#">Play</a>
-                </div>
+<a href="#games">🎮 Games</a>
 
-                <div class="card">
-                    <div class="emoji">🔤</div>
-                    <h3>Word Challenge</h3>
-                    <p>Test your spelling and vocabulary.</p>
-                    <a class="button" href="#">Play</a>
-                </div>
+<a href="#videos">🎬 Videos</a>
 
-                <div class="card">
-                    <div class="emoji">🔬</div>
-                    <h3>Science Quiz</h3>
-                    <p>How much do you know about science?</p>
-                    <a class="button" href="#">Play</a>
-                </div>
+<a href="#subjects">📚 Subjects</a>
 
-                <div class="card">
-                    <div class="emoji">🌍</div>
-                    <h3>World Quiz</h3>
-                    <p>Explore countries and geography.</p>
-                    <a class="button" href="#">Play</a>
-                </div>
+</nav>
 
-            </div>
-        </section>
+<main class="container">
+
+<!-- ================= GAMES ================= -->
+
+<section id="games">
+
+<h2 class="section-title">🎮 Educational Games</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="emoji">🧮</div>
+
+<h3>Math Challenge</h3>
+
+<p>Test your maths skills!</p>
+
+<button class="button" onclick="startMath()">
+Play
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🔤</div>
+
+<h3>Word Challenge</h3>
+
+<p>Test your spelling and vocabulary.</p>
+
+<button class="button" onclick="startWord()">
+Play
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🔬</div>
+
+<h3>Science Quiz</h3>
+
+<p>How much do you know about science?</p>
+
+<button class="button" onclick="startScience()">
+Play
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🌍</div>
+
+<h3>World Quiz</h3>
+
+<p>Explore countries and geography.</p>
+
+<button class="button" onclick="startWorld()">
+Play
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= MATH GAME ================= -->
+
+<section id="mathGame" class="game">
+
+<h2>🧮 Math Challenge</h2>
+
+<p class="question" id="mathQuestion"></p>
+
+<input
+id="mathAnswer"
+class="answer-input"
+type="number"
+placeholder="Your answer">
+
+<br><br>
+
+<button class="button" onclick="checkMath()">
+Submit
+</button>
+
+<div class="result" id="mathResult"></div>
+
+<div class="score" id="mathScore">
+Score: 0
+</div>
+
+<button class="button back" onclick="closeGame()">
+⬅ Back to Games
+</button>
+
+</section>
+
+<!-- ================= WORD GAME ================= -->
+
+<section id="wordGame" class="game">
+
+<h2>🔤 Word Challenge</h2>
+
+<p class="question" id="wordQuestion"></p>
+
+<div class="answers" id="wordAnswers"></div>
+
+<div class="result" id="wordResult"></div>
+
+<div class="score" id="wordScore">
+Score: 0
+</div>
+
+<button class="button back" onclick="closeGame()">
+⬅ Back to Games
+</button>
+
+</section>
+
+<!-- ================= SCIENCE GAME ================= -->
+
+<section id="scienceGame" class="game">
+
+<h2>🔬 Science Quiz</h2>
+
+<p class="question" id="scienceQuestion"></p>
+
+<div class="answers" id="scienceAnswers"></div>
+
+<div class="result" id="scienceResult"></div>
+
+<div class="score" id="scienceScore">
+Score: 0
+</div>
+
+<button class="button back" onclick="closeGame()">
+⬅ Back to Games
+</button>
+
+</section>
+
+<!-- ================= WORLD GAME ================= -->
+
+<section id="worldGame" class="game">
+
+<h2>🌍 World Quiz</h2>
+
+<p class="question" id="worldQuestion"></p>
+
+<div class="answers" id="worldAnswers"></div>
+
+<div class="result" id="worldResult"></div>
+
+<div class="score" id="worldScore">
+Score: 0
+</div>
+
+<button class="button back" onclick="closeGame()">
+⬅ Back to Games
+</button>
+
+</section>
+
+<!-- ================= VIDEOS ================= -->
+
+<section id="videos" style="margin-top:60px;">
+
+<h2 class="section-title">🎬 Learning Videos</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="emoji">🔢</div>
+
+<h3>Maths</h3>
+
+<p>Learn maths through fun videos.</p>
+
+<button class="button" onclick="videoMessage('Maths')">
+Watch
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🧪</div>
+
+<h3>Science</h3>
+
+<p>Discover how the world works.</p>
+
+<button class="button" onclick="videoMessage('Science')">
+Watch
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🐘</div>
+
+<h3>Animals</h3>
+
+<p>Learn amazing facts about animals.</p>
+
+<button class="button" onclick="videoMessage('Animals')">
+Watch
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SUBJECTS ================= -->
+
+<section id="subjects" style="margin-top:60px;">
+
+<h2 class="section-title">📚 Learn</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="emoji">➕</div>
+
+<h3>Mathematics</h3>
+
+<p>Numbers, equations and problem solving.</p>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🔬</div>
+
+<h3>Science</h3>
+
+<p>Explore biology, chemistry and physics.</p>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">📖</div>
+
+<h3>English</h3>
+
+<p>Improve reading, spelling and vocabulary.</p>
+
+</div>
+
+<div class="card">
+
+<div class="emoji">🌎</div>
+
+<h3>Geography</h3>
+
+<p>Explore our amazing planet.</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>🌟 Learn & Play</p>
+
+<p>Learning should be fun!</p>
+
+</footer>
+
+<script>
+
+/* =====================================
+   GENERAL GAME FUNCTIONS
+===================================== */
+
+function hideGames() {
+
+    document.getElementById("mathGame").style.display = "none";
+
+    document.getElementById("wordGame").style.display = "none";
+
+    document.getElementById("scienceGame").style.display = "none";
+
+    document.getElementById("worldGame").style.display = "none";
+
+}
 
 
-        <section id="videos" style="margin-top: 60px;">
-            <h2 class="section-title">🎬 Learning Videos</h2>
+function showGame(id) {
 
-            <div class="cards">
+    hideGames();
 
-                <div class="card">
-                    <div class="emoji">🔢</div>
-                    <h3>Maths</h3>
-                    <p>Learn maths through fun videos.</p>
-                    <a class="button" href="#">Watch</a>
-                </div>
+    document.getElementById(id).style.display = "block";
 
-                <div class="card">
-                    <div class="emoji">🧪</div>
-                    <h3>Science</h3>
-                    <p>Discover how the world works.</p>
-                    <a class="button" href="#">Watch</a>
-                </div>
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
 
-                <div class="card">
-                    <div class="emoji">🐘</div>
-                    <h3>Animals</h3>
-                    <p>Learn amazing facts about animals.</p>
-                    <a class="button" href="#">Watch</a>
-                </div>
-
-            </div>
-        </section>
+}
 
 
-        <section id="subjects" style="margin-top: 60px;">
-            <h2 class="section-title">📚 Learn</h2>
+function closeGame() {
 
-            <div class="cards">
+    hideGames();
 
-                <div class="card">
-                    <div class="emoji">➕</div>
-                    <h3>Mathematics</h3>
-                    <p>Numbers, equations and problem solving.</p>
-                </div>
+    document.getElementById("games").scrollIntoView({
+        behavior: "smooth"
+    });
 
-                <div class="card">
-                    <div class="emoji">🔬</div>
-                    <h3>Science</h3>
-                    <p>Explore biology, chemistry and physics.</p>
-                </div>
-
-                <div class="card">
-                    <div class="emoji">📖</div>
-                    <h3>English</h3>
-                    <p>Improve reading, spelling and vocabulary.</p>
-                </div>
-
-                <div class="card">
-                    <div class="emoji">🌎</div>
-                    <h3>Geography</h3>
-                    <p>Explore our amazing planet.</p>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
+}
 
 
-    <footer>
-        <p>🌟 Learn & Play</p>
-        <p>Learning should be fun!</p>
-    </footer>
+/* =====================================
+   MATH GAME
+===================================== */
+
+let mathAnswer;
+
+let mathScore = 0;
+
+
+function startMath() {
+
+    mathScore = 0;
+
+    document.getElementById("mathScore").textContent =
+        "Score: 0";
+
+    showGame("mathGame");
+
+    newMathQuestion();
+
+}
+
+
+function newMathQuestion() {
+
+    let a = Math.floor(Math.random() * 12) + 1;
+
+    let b = Math.floor(Math.random() * 12) + 1;
+
+    let operations = ["+", "-", "×"];
+
+    let operation =
+        operations[Math.floor(Math.random() * operations.length)];
+
+
+    if (operation === "+") {
+
+        mathAnswer = a + b;
+
+    }
+
+
+    if (operation === "-") {
+
+        if (b > a) {
+
+            let temp = a;
+
+            a = b;
+
+            b = temp;
+
+        }
+
+        mathAnswer = a - b;
+
+    }
+
+
+    if (operation === "×") {
+
+        mathAnswer = a * b;
+
+    }
+
+
+    document.getElementById("mathQuestion").textContent =
+        a + " " + operation + " " + b + " = ?";
+
+    document.getElementById("mathAnswer").value = "";
+
+    document.getElementById("mathResult").textContent = "";
+
+}
+
+
+function checkMath() {
+
+    let answer =
+        Number(document.getElementById("mathAnswer").value);
+
+
+    if (answer === mathAnswer) {
+
+        mathScore++;
+
+        document.getElementById("mathResult").textContent =
+            "🎉 Correct!";
+
+        document.getElementById("mathScore").textContent =
+            "Score: " + mathScore;
+
+        setTimeout(newMathQuestion, 700);
+
+    }
+
+    else {
+
+        document.getElementById("mathResult").textContent =
+            "❌ Try again!";
+
+    }
+
+}
+
+
+/* =====================================
+   WORD GAME
+===================================== */
+
+const wordQuestions = [
+
+{
+question: "Which word means the opposite of HOT?",
+answers: ["Cold", "Fast", "Tall", "Bright"],
+correct: "Cold"
+},
+
+{
+question: "Which word is spelled correctly?",
+answers: ["Beautifull", "Beautiful", "Beutiful", "Beautifal"],
+correct: "Beautiful"
+},
+
+{
+question: "Which word is a fruit?",
+answers: ["Apple", "Chair", "Book", "Pencil"],
+correct: "Apple"
+},
+
+{
+question: "What is the opposite of BIG?",
+answers: ["Huge", "Small", "Large", "Tall"],
+correct: "Small"
+},
+
+{
+question: "Which word means the same as HAPPY?",
+answers: ["Angry", "Joyful", "Sad", "Tired"],
+correct: "Joyful"
+}
+
+];
+
+
+let wordIndex = 0;
+
+let wordScoreValue = 0;
+
+
+function startWord() {
+
+    wordIndex = 0;
+
+    wordScoreValue = 0;
+
+    document.getElementById("wordScore").textContent =
+        "Score: 0";
+
+    showGame("wordGame");
+
+    showWordQuestion();
+
+}
+
+
+function showWordQuestion() {
+
+    let q = wordQuestions[wordIndex];
+
+    document.getElementById("wordQuestion").textContent =
+        q.question;
+
+    document.getElementById("wordResult").textContent = "";
+
+    let area =
+        document.getElementById("wordAnswers");
+
+    area.innerHTML = "";
+
+
+    q.answers.forEach(function(answer) {
+
+        let button =
+            document.createElement("button");
+
+        button.className = "answer-button";
+
+        button.textContent = answer;
+
+        button.onclick = function() {
+
+            checkWord(answer);
+
+        };
+
+        area.appendChild(button);
+
+    });
+
+}
+
+
+function checkWord(answer) {
+
+    let correct =
+        wordQuestions[wordIndex].correct;
+
+
+    if (answer === correct) {
+
+        wordScoreValue++;
+
+        document.getElementById("wordResult").textContent =
+            "🎉 Correct!";
+
+    }
+
+    else {
+
+        document.getElementById("wordResult").textContent =
+            "❌ The correct answer was " + correct;
+
+    }
+
+
+    document.getElementById("wordScore").textContent =
+        "Score: " + wordScoreValue;
+
+
+    wordIndex++;
+
+
+    if (wordIndex >= wordQuestions.length) {
+
+        setTimeout(function() {
+
+            alert(
+                "🎉 Word Challenge complete! You scored " +
+                wordScoreValue +
+                " out of " +
+                wordQuestions.length +
+                "!"
+            );
+
+            closeGame();
+
+        }, 700);
+
+    }
+
+    else {
+
+        setTimeout(showWordQuestion, 700);
+
+    }
+
+}
+
+
+/* =====================================
+   SCIENCE GAME
+===================================== */
+
+const scienceQuestions = [
+
+{
+question: "Which planet is known as the Red Planet?",
+answers: ["Mars", "Earth", "Venus", "Jupiter"],
+correct: "Mars"
+},
+
+{
+question: "What gas do humans need to breathe?",
+answers: ["Oxygen", "Carbon dioxide", "Helium", "Hydrogen"],
+correct: "Oxygen"
+},
+
+{
+question: "What is H₂O?",
+answers: ["Water", "Oxygen", "Salt", "Hydrogen"],
+correct: "Water"
+},
+
+{
+question: "Which organ pumps blood around the body?",
+answers: ["Heart", "Lung", "Brain", "Stomach"],
+correct: "Heart"
+},
+
+{
+question: "What force pulls objects toward Earth?",
+answers: ["Gravity", "Magnetism", "Friction", "Sound"],
+correct: "Gravity"
+}
+
+];
+
+
+let scienceIndex = 0;
+
+let scienceScoreValue = 0;
+
+
+function startScience() {
+
+    scienceIndex = 0;
+
+    scienceScoreValue = 0;
+
+    document.getElementById("scienceScore").textContent =
+        "Score: 0";
+
+    showGame("scienceGame");
+
+    showScienceQuestion();
+
+}
+
+
+function showScienceQuestion() {
+
+    let q =
+        scienceQuestions[scienceIndex];
+
+    document.getElementById("scienceQuestion").textContent =
+        q.question;
+
+    document.getElementById("scienceResult").textContent = "";
+
+    let area =
+        document.getElementById("scienceAnswers");
+
+    area.innerHTML = "";
+
+
+    q.answers.forEach(function(answer) {
+
+        let button =
+            document.createElement("button");
+
+        button.className = "answer-button";
+
+        button.textContent = answer;
+
+        button.onclick = function() {
+
+            checkScience(answer);
+
+        };
+
+        area.appendChild(button);
+
+    });
+
+}
+
+
+function checkScience(answer) {
+
+    let correct =
+        scienceQuestions[scienceIndex].correct;
+
+
+    if (answer === correct) {
+
+        scienceScoreValue++;
+
+        document.getElementById("scienceResult").textContent =
+            "🎉 Correct!";
+
+    }
+
+    else {
+
+        document.getElementById("scienceResult").textContent =
+            "❌ The correct answer was " + correct;
+
+    }
+
+
+    document.getElementById("scienceScore").textContent =
+        "Score: " + scienceScoreValue;
+
+
+    scienceIndex++;
+
+
+    if (scienceIndex >= scienceQuestions.length) {
+
+        setTimeout(function() {
+
+            alert(
+                "🎉 Science Quiz complete! You scored " +
+                scienceScoreValue +
+                " out of " +
+                scienceQuestions.length +
+                "!"
+            );
+
+            closeGame();
+
+        }, 700);
+
+    }
+
+    else {
+
+        setTimeout(showScienceQuestion, 700);
+
+    }
+
+}
+
+
+/* =====================================
+   WORLD QUIZ
+===================================== */
+
+const worldQuestions = [
+
+{
+question: "What is the capital city of France?",
+answers: ["Paris", "London", "Rome", "Madrid"],
+correct: "Paris"
+},
+
+{
+question: "Which is the largest ocean?",
+answers: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+correct: "Pacific Ocean"
+},
+
+{
+question: "Which continent is Egypt in?",
+answers: ["Africa", "Europe", "Asia", "South America"],
+correct: "Africa"
+},
+
+{
+question: "What is the largest country by land area?",
+answers: ["Russia", "Canada", "China", "Brazil"],
+correct: "Russia"
+},
+
+{
+question: "Which country is famous for the pyramids of Giza?",
+answers: ["Egypt", "Greece", "Mexico", "Italy"],
+correct: "Egypt"
+}
+
+];
+
+
+let worldIndex = 0;
+
+let worldScoreValue = 0;
+
+
+function startWorld() {
+
+    worldIndex = 0;
+
+    worldScoreValue = 0;
+
+    document.getElementById("worldScore").textContent =
+        "Score: 0";
+
+    showGame("worldGame");
+
+    showWorldQuestion();
+
+}
+
+
+function showWorldQuestion() {
+
+    let q =
+        worldQuestions[worldIndex];
+
+    document.getElementById("worldQuestion").textContent =
+        q.question;
+
+    document.getElementById("worldResult").textContent = "";
+
+    let area =
+        document.getElementById("worldAnswers");
+
+    area.innerHTML = "";
+
+
+    q.answers.forEach(function(answer) {
+
+        let button =
+            document.createElement("button");
+
+        button.className = "answer-button";
+
+        button.textContent = answer;
+
+        button.onclick = function() {
+
+            checkWorld(answer);
+
+        };
+
+        area.appendChild(button);
+
+    });
+
+}
+
+
+function checkWorld(answer) {
+
+    let correct =
+        worldQuestions[worldIndex].correct;
+
+
+    if (answer === correct) {
+
+        worldScoreValue++;
+
+        document.getElementById("worldResult").textContent =
+            "🎉 Correct!";
+
+    }
+
+    else {
+
+        document.getElementById("worldResult").textContent =
+            "❌ The correct answer was " + correct;
+
+    }
+
+
+    document.getElementById("worldScore").textContent =
+        "Score: " + worldScoreValue;
+
+
+    worldIndex++;
+
+
+    if (worldIndex >= worldQuestions.length) {
+
+        setTimeout(function() {
+
+            alert(
+                "🎉 World Quiz complete! You scored " +
+                worldScoreValue +
+                " out of " +
+                worldQuestions.length +
+                "!"
+            );
+
+            closeGame();
+
+        }, 700);
+
+    }
+
+    else {
+
+        setTimeout(showWorldQuestion, 700);
+
+    }
+
+}
+
+
+/* =====================================
+   VIDEOS
+===================================== */
+
+function videoMessage(subject) {
+
+    alert(
+        subject +
+        " learning videos will be added soon! 🎬"
+    );
+
+}
+
+</script>
 
 </body>
 </html>
