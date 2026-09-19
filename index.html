@@ -1,1128 +1,1877 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="icon" type="image/png" href="logo.png">
-<title>ADJ Kids zone</title>
+
+<title>ADJ Kids Center</title>
+
+<meta name="description"
+content="ADJ Kids Center - Learn, Truth, Fun. Educational games and lessons for children.">
 
 <style>
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f4f8ff;
-    color: #222;
+    color: #18233a;
+    overflow-x: hidden;
 }
 
+/* HEADER */
+
 header {
-    background: #4f46e5;
+    background: linear-gradient(135deg, #5b4bdb, #3aa7ff);
     color: white;
     text-align: center;
-    padding: 45px 20px;
+    padding: 20px 15px;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.site-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 header h1 {
-    font-size: 45px;
     margin: 0;
+    font-size: 2.2rem;
 }
 
-header p {
-    font-size: 20px;
+.tagline {
+    margin: 7px 0 0;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
+
+/* NAVIGATION */
 
 nav {
-    background: white;
-    text-align: center;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-nav a {
-    text-decoration: none;
-    color: #4f46e5;
+nav button {
+    border: none;
+    background: white;
+    padding: 14px 18px;
     font-weight: bold;
-    margin: 0 15px;
+    cursor: pointer;
+    color: #334;
 }
+
+nav button:hover {
+    background: #e9f1ff;
+}
+
+/* GENERAL */
 
 .container {
     max-width: 1100px;
     margin: auto;
-    padding: 35px 20px;
+    padding: 25px 15px;
 }
 
 .section-title {
     text-align: center;
-    font-size: 30px;
-    margin-bottom: 25px;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
+
+.hidden {
+    display: none !important;
+}
+
+/* HOME CARDS */
 
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 18px;
 }
 
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 15px;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.emoji {
-    font-size: 50px;
 }
 
 .card h3 {
-    font-size: 22px;
+    font-size: 1.35rem;
 }
 
-.button {
-    display: inline-block;
-    background: #4f46e5;
-    color: white;
-    padding: 11px 20px;
-    border-radius: 8px;
+.card button,
+.primary-btn {
     border: none;
-    text-decoration: none;
+    background: #5b4bdb;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.button:hover {
-    background: #3730a3;
+.card button:hover,
+.primary-btn:hover {
+    transform: scale(1.03);
 }
 
-.game {
-    display: block;
+/* GAME AREA */
+
+.game-box {
     background: white;
-    max-width: 650px;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 20px;
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
-.game h2 {
-    font-size: 32px;
 }
 
 .question {
-    font-size: 28px;
+    font-size: 2rem;
     font-weight: bold;
     margin: 25px 0;
 }
 
-.answer-input {
-    padding: 12px;
-    font-size: 20px;
-    border: 2px solid #4f46e5;
-    border-radius: 8px;
-    width: 200px;
+.answer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.answer-btn {
+    position: relative;
+    min-height: 90px;
+    border: 3px solid #dbe4ff;
+    background: #ffffff;
+    border-radius: 18px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer-btn:hover {
+    transform: scale(1.03);
+    border-color: #5b4bdb;
+}
+
+.answer-btn.correct {
+    background: #d9ffd9;
+    border-color: #24a148;
+}
+
+.answer-btn.wrong {
+    background: #ffe1e1;
+    border-color: #e53935;
+}
+
+.x-mark {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 2.5rem;
+    color: #e53935;
+    font-weight: 900;
+}
+
+.feedback {
+    min-height: 35px;
+    font-weight: bold;
+    margin: 15px;
+    font-size: 1.15rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    margin-top: 20px;
+    border: none;
+    background: #555;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* EXPLANATION */
+
+.explanation {
+    background: #fff8d9;
+    border: 3px solid #ffd54f;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.explanation h3 {
+    margin-top: 0;
+}
+
+/* LEVEL */
+
+.level-box {
+    text-align: center;
+    background: #eaf4ff;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* LEARNING */
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.lesson-card {
+    background: white;
+    border-radius: 20px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+}
+
+.lesson-card .big-picture {
+    font-size: 4rem;
+    margin: 10px;
+}
+
+.lesson-card button {
+    border: none;
+    background: #3aa7ff;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* STORYBOOK */
+
+.storybook {
+    background: #fffdf3;
+    border: 5px solid #d8b36a;
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 850px;
+    margin: 20px auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.story-page {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.answers {
-    display: grid;
-    gap: 12px;
-    max-width: 450px;
-    margin: 20px auto;
+.story-picture {
+    font-size: 6rem;
+    margin: 10px;
 }
 
-.answer-button {
-    padding: 14px;
-    border: 2px solid #4f46e5;
-    background: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
+.story-text {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+.story-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* MATH LESSON */
+
+.math-example {
+    background: #edf7ff;
+    padding: 25px;
+    border-radius: 18px;
+    font-size: 2rem;
     font-weight: bold;
+    margin: 20px 0;
 }
 
-.answer-button:hover {
-    background: #eef2ff;
+/* STICKERS */
+
+#stickerLayer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1500;
 }
 
-.result {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 20px;
-    min-height: 25px;
+.sticker {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    pointer-events: auto;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,0.2));
 }
 
-.score {
-    color: #4f46e5;
-    font-size: 20px;
-    font-weight: bold;
+.sticker:active {
+    cursor: grabbing;
 }
 
-.back {
-    background: #555;
-    margin-top: 15px;
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    font-size: 25px;
+    z-index: 3000;
+    pointer-events: none;
+    animation: fall 1.5s linear forwards;
 }
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* FLASHES */
+
+.correct-flash {
+    animation: correctFlash 0.7s;
+}
+
+@keyframes correctFlash {
+    50% {
+        background: #dfffe2;
+    }
+}
+
+.wrong-flash {
+    animation: wrongFlash 0.5s;
+}
+
+@keyframes wrongFlash {
+    50% {
+        background: #ffe0e0;
+    }
+}
+
+/* PROGRESS */
+
+.progress {
+    height: 14px;
+    background: #e2e7f0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #5b4bdb;
+    transition: width 0.3s;
+}
+
+/* FOOTER */
 
 footer {
-    background: #222;
+    background: #20283a;
     color: white;
     text-align: center;
     padding: 25px;
     margin-top: 40px;
 }
-.site-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    vertical-align: middle;
-    margin-right: 10px;
-    }
-</style>
 
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    .site-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .answer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .question {
+        font-size: 1.5rem;
+    }
+
+    .answer-btn {
+        min-height: 75px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
+    <div class="header-title">
+        <img src="logo.png" alt="ADJ Kids Center Logo" class="site-logo">
+        <h1>ADJ Kids Center</h1>
+    </div>
 
-<h1>
-    <img src="logo.png" alt="ADJ Kids Center Logo" class="site-logo">
-    ADJ Kids zone
-</h1>
-<p>Learn • Through • Fun</p>
-
+    <p class="tagline">Learn • Truth • Fun</p>
 </header>
 
 <nav>
-
-<a href="#games">🎮 Games</a>
-
-<a href="#videos">🎬 Videos</a>
-
-<a href="#subjects">📚 Subjects</a>
-
+    <button onclick="goHome()">🏠 Home</button>
+    <button onclick="showGames()">🎮 Games</button>
+    <button onclick="showLearning()">📚 Learn</button>
 </nav>
 
-<main class="container">
+<main>
 
-<!-- ================= GAMES ================= -->
+<!-- HOME -->
 
-<section id="games">
+<section id="homeSection" class="container">
 
-<h2 class="section-title">🎮 Educational Games</h2>
+    <h2 class="section-title">Welcome to ADJ Kids Center! 🌟</h2>
 
-<div class="cards">
+    <p style="text-align:center;font-size:1.2rem;">
+        Learn new things, play educational games and have fun!
+    </p>
 
-<div class="card">
+    <div class="cards">
 
-<div class="emoji">🧮</div>
+        <div class="card">
+            <div style="font-size:3rem;">🧮</div>
+            <h3>Math Challenge</h3>
+            <p>Test your calculation skills.</p>
+            <button onclick="startGame('math')">Play Math</button>
+        </div>
 
-<h3>Math Challenge</h3>
+        <div class="card">
+            <div style="font-size:3rem;">📖</div>
+            <h3>English</h3>
+            <p>Learn English through stories.</p>
+            <button onclick="openLesson('english')">Learn English</button>
+        </div>
 
-<p>Test your maths skills!</p>
+        <div class="card">
+            <div style="font-size:3rem;">🔬</div>
+            <h3>Science</h3>
+            <p>Explore the world around you.</p>
+            <button onclick="openLesson('science')">Learn Science</button>
+        </div>
 
-<button class="button" onclick="startMath()">
-Play
-</button>
+        <div class="card">
+            <div style="font-size:3rem;">🇫🇷</div>
+            <h3>French</h3>
+            <p>Learn French with stories and voices.</p>
+            <button onclick="openLesson('french')">Learn French</button>
+        </div>
 
-</div>
-
-<div class="card">
-
-<div class="emoji">🔤</div>
-
-<h3>Word Challenge</h3>
-
-<p>Test your spelling and vocabulary.</p>
-
-<button class="button" onclick="startWord()">
-Play
-</button>
-
-</div>
-
-<div class="card">
-
-<div class="emoji">🔬</div>
-
-<h3>Science Quiz</h3>
-
-<p>How much do you know about science?</p>
-
-<button class="button" onclick="startScience()">
-Play
-</button>
-
-</div>
-
-<div class="card">
-
-<div class="emoji">🌍</div>
-
-<h3>World Quiz</h3>
-
-<p>Explore countries and geography.</p>
-
-<button class="button" onclick="startWorld()">
-Play
-</button>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ================= MATH GAME ================= -->
 
-<section id="mathGame" class="game">
+<!-- GAMES -->
 
-<h2>🧮 Math Challenge</h2>
+<section id="gamesSection" class="container hidden">
 
-<p class="question" id="mathQuestion"></p>
+    <h2 class="section-title">🎮 ADJ Kids Games</h2>
 
-<input
-id="mathAnswer"
-class="answer-input"
-type="number"
-placeholder="Your answer">
+    <div class="level-box">
+        <strong id="levelText">Level 1</strong>
+        <br>
+        <span id="stickerText">Stickers: 0</span>
+        <br>
+        <span id="goalText">Next sticker: 5 correct answers in a row</span>
+    </div>
 
-<br><br>
+    <div class="cards">
 
-<button class="button" onclick="checkMath()">
-Submit
-</button>
+        <div class="card">
+            <div style="font-size:3rem;">🧮</div>
+            <h3>Math Challenge</h3>
+            <p>Two choices. One answer!</p>
+            <button onclick="startGame('math')">Start</button>
+        </div>
 
-<div class="result" id="mathResult"></div>
+        <div class="card">
+            <div style="font-size:3rem;">🇬🇧</div>
+            <h3>English Challenge</h3>
+            <p>Vocabulary and language.</p>
+            <button onclick="startGame('englishQuiz')">Start</button>
+        </div>
 
-<div class="score" id="mathScore">
-Score: 0
-</div>
+        <div class="card">
+            <div style="font-size:3rem;">🔬</div>
+            <h3>Science Challenge</h3>
+            <p>Test your science knowledge.</p>
+            <button onclick="startGame('scienceQuiz')">Start</button>
+        </div>
 
-<button class="button back" onclick="closeGame()">
-⬅ Back to Games
-</button>
+        <div class="card">
+            <div style="font-size:3rem;">🇫🇷</div>
+            <h3>French Challenge</h3>
+            <p>Learn French words.</p>
+            <button onclick="startGame('frenchQuiz')">Start</button>
+        </div>
 
-</section>
-
-<!-- ================= WORD GAME ================= -->
-
-<section id="wordGame" class="game">
-
-<h2>🔤 Word Challenge</h2>
-
-<p class="question" id="wordQuestion"></p>
-
-<div class="answers" id="wordAnswers"></div>
-
-<div class="result" id="wordResult"></div>
-
-<div class="score" id="wordScore">
-Score: 0
-</div>
-
-<button class="button back" onclick="closeGame()">
-⬅ Back to Games
-</button>
+    </div>
 
 </section>
 
-<!-- ================= SCIENCE GAME ================= -->
 
-<section id="scienceGame" class="game">
+<!-- GAME SCREEN -->
 
-<h2>🔬 Science Quiz</h2>
+<section id="gameScreen" class="container hidden">
 
-<p class="question" id="scienceQuestion"></p>
+    <div class="game-box">
 
-<div class="answers" id="scienceAnswers"></div>
+        <div class="stats">
+            <span>⭐ Score: <span id="score">0</span></span>
+            <span>🔥 Streak: <span id="streak">0</span></span>
+            <span>🏆 Stickers: <span id="stickers">0</span></span>
+        </div>
 
-<div class="result" id="scienceResult"></div>
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
 
-<div class="score" id="scienceScore">
-Score: 0
-</div>
+        <h2 id="gameTitle">Challenge</h2>
 
-<button class="button back" onclick="closeGame()">
-⬅ Back to Games
-</button>
+        <div id="question" class="question">
+            Question
+        </div>
 
-</section>
+        <div id="answers" class="answer-grid"></div>
 
-<!-- ================= WORLD GAME ================= -->
+        <div id="feedback" class="feedback"></div>
 
-<section id="worldGame" class="game">
+        <div id="explanation" class="explanation hidden"></div>
 
-<h2>🌍 World Quiz</h2>
+        <button id="nextButton"
+                class="primary-btn hidden"
+                onclick="nextQuestion()">
+            Next Question ➜
+        </button>
 
-<p class="question" id="worldQuestion"></p>
+        <br>
 
-<div class="answers" id="worldAnswers"></div>
+        <button class="close-btn" onclick="showGames()">
+            ← Back to Games
+        </button>
 
-<div class="result" id="worldResult"></div>
-
-<div class="score" id="worldScore">
-Score: 0
-</div>
-
-<button class="button back" onclick="closeGame()">
-⬅ Back to Games
-</button>
-
-</section>
-
-<!-- ================= VIDEOS ================= -->
-
-<section id="videos" style="margin-top:60px;">
-
-<h2 class="section-title">🎬 Learning Videos</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<div class="emoji">🔢</div>
-
-<h3>Maths</h3>
-
-<p>Learn maths through fun videos.</p>
-
-<button class="button" onclick="videoMessage('Maths')">
-Watch
-</button>
-
-</div>
-
-<div class="card">
-
-<div class="emoji">🧪</div>
-
-<h3>Science</h3>
-
-<p>Discover how the world works.</p>
-
-<button class="button" onclick="videoMessage('Science')">
-Watch
-</button>
-
-</div>
-
-<div class="card">
-
-<div class="emoji">🐘</div>
-
-<h3>Animals</h3>
-
-<p>Learn amazing facts about animals.</p>
-
-<button class="button" onclick="videoMessage('Animals')">
-Watch
-</button>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ================= SUBJECTS ================= -->
 
-<section id="subjects" style="margin-top:60px;">
+<!-- LEARNING -->
 
-<h2 class="section-title">📚 Learn</h2>
+<section id="learningSection" class="container hidden">
 
-<div class="cards">
+    <h2 class="section-title">📚 Learn</h2>
 
-<div class="card">
+    <div class="learning-grid">
 
-<div class="emoji">➕</div>
+        <div class="lesson-card">
+            <div class="big-picture">📖</div>
+            <h3>English</h3>
+            <p>Learn English through a storybook.</p>
+            <button onclick="openLesson('english')">Open Lesson</button>
+        </div>
 
-<h3>Mathematics</h3>
+        <div class="lesson-card">
+            <div class="big-picture">🧮</div>
+            <h3>Maths</h3>
+            <p>Learn maths step by step.</p>
+            <button onclick="openLesson('math')">Open Lesson</button>
+        </div>
 
-<p>Numbers, equations and problem solving.</p>
+        <div class="lesson-card">
+            <div class="big-picture">🔬</div>
+            <h3>Science</h3>
+            <p>Explore science with pictures.</p>
+            <button onclick="openLesson('science')">Open Lesson</button>
+        </div>
 
-</div>
+        <div class="lesson-card">
+            <div class="big-picture">🇫🇷</div>
+            <h3>French</h3>
+            <p>Learn French through a story.</p>
+            <button onclick="openLesson('french')">Open Lesson</button>
+        </div>
 
-<div class="card">
+    </div>
 
-<div class="emoji">🔬</div>
+</section>
 
-<h3>Science</h3>
 
-<p>Explore biology, chemistry and physics.</p>
+<!-- LESSON SCREEN -->
 
-</div>
+<section id="lessonScreen" class="container hidden">
 
-<div class="card">
+    <div class="storybook">
 
-<div class="emoji">📖</div>
+        <h2 id="lessonTitle" style="text-align:center;">
+            Lesson
+        </h2>
 
-<h3>English</h3>
+        <div class="story-page">
 
-<p>Improve reading, spelling and vocabulary.</p>
+            <div id="lessonPicture" class="story-picture">
+                📚
+            </div>
 
-</div>
+            <div id="lessonText" class="story-text">
+                Welcome!
+            </div>
 
-<div class="card">
+            <button class="primary-btn"
+                    onclick="speakLesson()">
+                🔊 Hear Lesson
+            </button>
 
-<div class="emoji">🌎</div>
+        </div>
 
-<h3>Geography</h3>
+        <div class="story-buttons">
 
-<p>Explore our amazing planet.</p>
+            <button class="primary-btn"
+                    onclick="previousLessonPage()">
+                ← Previous
+            </button>
 
-</div>
+            <span id="lessonPage"
+                  style="padding:12px;font-weight:bold;">
+                1 / 1
+            </span>
 
-</div>
+            <button class="primary-btn"
+                    onclick="nextLessonPage()">
+                Next →
+            </button>
+
+        </div>
+
+        <br>
+
+        <button class="close-btn"
+                onclick="showLearning()">
+            ← Back to Learn
+        </button>
+
+    </div>
 
 </section>
 
 </main>
 
+
+<!-- STICKERS -->
+
+<div id="stickerLayer"></div>
+
+
 <footer>
-
-<p>🌟 Learn & Play</p>
-
-<p>Learning should be fun!</p>
-
+    <p>🌟 ADJ Kids Center 🌟</p>
+    <p>Learn • Truth • Fun</p>
 </footer>
+
 
 <script>
 
-/* =====================================
-   GENERAL GAME FUNCTIONS
-===================================== */
+/* =========================================================
+   BASIC NAVIGATION
+========================================================= */
 
-function hideGames() {
+function hideAllSections() {
 
-    document.getElementById("mathGame").style.display = "none";
-
-    document.getElementById("wordGame").style.display = "none";
-
-    document.getElementById("scienceGame").style.display = "none";
-
-    document.getElementById("worldGame").style.display = "none";
-
+    document.getElementById("homeSection").classList.add("hidden");
+    document.getElementById("gamesSection").classList.add("hidden");
+    document.getElementById("gameScreen").classList.add("hidden");
+    document.getElementById("learningSection").classList.add("hidden");
+    document.getElementById("lessonScreen").classList.add("hidden");
 }
 
+function goHome() {
 
-function showGame(id) {
+    hideAllSections();
 
-    hideGames();
+    document.getElementById("homeSection")
+        .classList.remove("hidden");
 
-    document.getElementById(id).style.display = "block";
-
-    document.getElementById(id).scrollIntoView({
+    window.scrollTo({
+        top: 0,
         behavior: "smooth"
     });
-
 }
 
+function showGames() {
 
-function closeGame() {
+    hideAllSections();
 
-    hideGames();
+    document.getElementById("gamesSection")
+        .classList.remove("hidden");
 
-    document.getElementById("games").scrollIntoView({
+    updateStats();
+
+    window.scrollTo({
+        top: 0,
         behavior: "smooth"
     });
+}
 
+function showLearning() {
+
+    hideAllSections();
+
+    document.getElementById("learningSection")
+        .classList.remove("hidden");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-/* =====================================
-   MATH GAME
-===================================== */
+/* =========================================================
+   VOICE SYSTEM
+========================================================= */
 
-let mathAnswer;
+function speak(text) {
 
-let mathScore = 0;
+    if (!("speechSynthesis" in window)) {
+        return;
+    }
 
+    speechSynthesis.cancel();
 
-function startMath() {
+    const voice = new SpeechSynthesisUtterance(text);
 
-    mathScore = 0;
+    voice.rate = 0.88;
+    voice.pitch = 1.05;
+    voice.volume = 1;
 
-    document.getElementById("mathScore").textContent =
-        "Score: 0";
-
-    showGame("mathGame");
-
-    newMathQuestion();
-
+    speechSynthesis.speak(voice);
 }
 
 
-function newMathQuestion() {
+/* =========================================================
+   PLAYER PROGRESS
+========================================================= */
 
-    let a = Math.floor(Math.random() * 12) + 1;
+let score = Number(localStorage.getItem("adjScore")) || 0;
+let streak = Number(localStorage.getItem("adjStreak")) || 0;
+let stickerCount = Number(localStorage.getItem("adjStickers")) || 0;
 
-    let b = Math.floor(Math.random() * 12) + 1;
+let stickerGoal = Number(localStorage.getItem("adjStickerGoal")) || 5;
 
-    let operations = ["+", "-", "×"];
+let level = Number(localStorage.getItem("adjLevel")) || 1;
 
-    let operation =
-        operations[Math.floor(Math.random() * operations.length)];
+let stickersSinceUpgrade =
+    Number(localStorage.getItem("adjStickersSinceUpgrade")) || 0;
 
+function saveProgress() {
 
-    if (operation === "+") {
+    localStorage.setItem("adjScore", score);
+    localStorage.setItem("adjStreak", streak);
+    localStorage.setItem("adjStickers", stickerCount);
+    localStorage.setItem("adjStickerGoal", stickerGoal);
+    localStorage.setItem("adjLevel", level);
+    localStorage.setItem(
+        "adjStickersSinceUpgrade",
+        stickersSinceUpgrade
+    );
+}
 
-        mathAnswer = a + b;
+function updateStats() {
 
-    }
+    document.getElementById("score").textContent = score;
+    document.getElementById("streak").textContent = streak;
+    document.getElementById("stickers").textContent = stickerCount;
 
+    document.getElementById("levelText").textContent =
+        "Level " + level;
 
-    if (operation === "-") {
+    document.getElementById("stickerText").textContent =
+        "Stickers: " + stickerCount;
 
-        if (b > a) {
-
-            let temp = a;
-
-            a = b;
-
-            b = temp;
-
-        }
-
-        mathAnswer = a - b;
-
-    }
-
-
-    if (operation === "×") {
-
-        mathAnswer = a * b;
-
-    }
-
-
-    document.getElementById("mathQuestion").textContent =
-        a + " " + operation + " " + b + " = ?";
-
-    document.getElementById("mathAnswer").value = "";
-
-    document.getElementById("mathResult").textContent = "";
-
+    document.getElementById("goalText").textContent =
+        "Next sticker: " + stickerGoal +
+        " correct answers in a row";
 }
 
 
-function checkMath() {
+/* =========================================================
+   QUESTION DATABASE
+========================================================= */
 
-    let answer =
-        Number(document.getElementById("mathAnswer").value);
+const mathQuestions = [
 
+    {
+        question: "What is 7 + 5?",
+        answers: ["12", "13"],
+        correct: "12",
+        explanation: "Start with 7 and add 5. Count 8, 9, 10, 11, 12. So 7 + 5 = 12."
+    },
 
-    if (answer === mathAnswer) {
+    {
+        question: "What is 9 × 3?",
+        answers: ["27", "21"],
+        correct: "27",
+        explanation: "Multiplication means repeated addition. 9 × 3 means 9 + 9 + 9 = 27."
+    },
 
-        mathScore++;
+    {
+        question: "What is 20 − 8?",
+        answers: ["12", "14"],
+        correct: "12",
+        explanation: "Take 8 away from 20. 20 − 8 = 12."
+    },
 
-        document.getElementById("mathResult").textContent =
-            "🎉 Correct!";
+    {
+        question: "What is 6 × 4?",
+        answers: ["24", "20"],
+        correct: "24",
+        explanation: "6 groups of 4 means 4 + 4 + 4 + 4 + 4 + 4 = 24."
+    },
 
-        document.getElementById("mathScore").textContent =
-            "Score: " + mathScore;
+    {
+        question: "What is 36 ÷ 6?",
+        answers: ["6", "8"],
+        correct: "6",
+        explanation: "Division asks how many groups of 6 make 36. 6 × 6 = 36, so 36 ÷ 6 = 6."
+    },
 
-        setTimeout(newMathQuestion, 700);
+    {
+        question: "What is 15 + 17?",
+        answers: ["32", "31"],
+        correct: "32",
+        explanation: "Add the tens: 10 + 10 = 20. Add the ones: 5 + 7 = 12. Then 20 + 12 = 32."
+    },
 
+    {
+        question: "What is 50 − 23?",
+        answers: ["27", "37"],
+        correct: "27",
+        explanation: "50 − 20 = 30. Then 30 − 3 = 27."
+    },
+
+    {
+        question: "What is 8 × 7?",
+        answers: ["56", "54"],
+        correct: "56",
+        explanation: "8 groups of 7 equal 56. So 8 × 7 = 56."
     }
-
-    else {
-
-        document.getElementById("mathResult").textContent =
-            "❌ Try again!";
-
-    }
-
-}
-
-
-/* =====================================
-   WORD GAME
-===================================== */
-
-const wordQuestions = [
-
-{
-question: "Which word means the opposite of HOT?",
-answers: ["Cold", "Fast", "Tall", "Bright"],
-correct: "Cold"
-},
-
-{
-question: "Which word is spelled correctly?",
-answers: ["Beautifull", "Beautiful", "Beutiful", "Beautifal"],
-correct: "Beautiful"
-},
-
-{
-question: "Which word is a fruit?",
-answers: ["Apple", "Chair", "Book", "Pencil"],
-correct: "Apple"
-},
-
-{
-question: "What is the opposite of BIG?",
-answers: ["Huge", "Small", "Large", "Tall"],
-correct: "Small"
-},
-
-{
-question: "Which word means the same as HAPPY?",
-answers: ["Angry", "Joyful", "Sad", "Tired"],
-correct: "Joyful"
-}
 
 ];
 
 
-let wordIndex = 0;
+const englishQuestions = [
 
-let wordScoreValue = 0;
+    {
+        question: "Which word is a noun?",
+        answers: ["Teacher", "Quickly"],
+        correct: "Teacher",
+        explanation: "A teacher is a person, so it is a noun. Quickly is an adverb."
+    },
 
+    {
+        question: "Which word means the opposite of 'hot'?",
+        answers: ["Cold", "Warm"],
+        correct: "Cold",
+        explanation: "Cold is the opposite of hot."
+    },
 
-function startWord() {
+    {
+        question: "Which sentence is correct?",
+        answers: ["The boy is happy.", "The boy are happy."],
+        correct: "The boy is happy.",
+        explanation: "Boy is singular, so we use 'is'."
+    },
 
-    wordIndex = 0;
+    {
+        question: "What is the plural of 'child'?",
+        answers: ["Children", "Childs"],
+        correct: "Children",
+        explanation: "The irregular plural of child is children."
+    },
 
-    wordScoreValue = 0;
-
-    document.getElementById("wordScore").textContent =
-        "Score: 0";
-
-    showGame("wordGame");
-
-    showWordQuestion();
-
-}
-
-
-function showWordQuestion() {
-
-    let q = wordQuestions[wordIndex];
-
-    document.getElementById("wordQuestion").textContent =
-        q.question;
-
-    document.getElementById("wordResult").textContent = "";
-
-    let area =
-        document.getElementById("wordAnswers");
-
-    area.innerHTML = "";
-
-
-    q.answers.forEach(function(answer) {
-
-        let button =
-            document.createElement("button");
-
-        button.className = "answer-button";
-
-        button.textContent = answer;
-
-        button.onclick = function() {
-
-            checkWord(answer);
-
-        };
-
-        area.appendChild(button);
-
-    });
-
-}
-
-
-function checkWord(answer) {
-
-    let correct =
-        wordQuestions[wordIndex].correct;
-
-
-    if (answer === correct) {
-
-        wordScoreValue++;
-
-        document.getElementById("wordResult").textContent =
-            "🎉 Correct!";
-
+    {
+        question: "Which word is an adjective?",
+        answers: ["Beautiful", "Run"],
+        correct: "Beautiful",
+        explanation: "Beautiful describes something, so it is an adjective."
     }
 
-    else {
+];
 
-        document.getElementById("wordResult").textContent =
-            "❌ The correct answer was " + correct;
-
-    }
-
-
-    document.getElementById("wordScore").textContent =
-        "Score: " + wordScoreValue;
-
-
-    wordIndex++;
-
-
-    if (wordIndex >= wordQuestions.length) {
-
-        setTimeout(function() {
-
-            alert(
-                "🎉 Word Challenge complete! You scored " +
-                wordScoreValue +
-                " out of " +
-                wordQuestions.length +
-                "!"
-            );
-
-            closeGame();
-
-        }, 700);
-
-    }
-
-    else {
-
-        setTimeout(showWordQuestion, 700);
-
-    }
-
-}
-
-
-/* =====================================
-   SCIENCE GAME
-===================================== */
 
 const scienceQuestions = [
 
-{
-question: "Which planet is known as the Red Planet?",
-answers: ["Mars", "Earth", "Venus", "Jupiter"],
-correct: "Mars"
-},
+    {
+        question: "Which part of a plant absorbs water?",
+        answers: ["Roots", "Flowers"],
+        correct: "Roots",
+        explanation: "Roots take in water and minerals from the soil."
+    },
 
-{
-question: "What gas do humans need to breathe?",
-answers: ["Oxygen", "Carbon dioxide", "Helium", "Hydrogen"],
-correct: "Oxygen"
-},
+    {
+        question: "Which organ pumps blood around the body?",
+        answers: ["Heart", "Lung"],
+        correct: "Heart",
+        explanation: "The heart is a muscular organ that pumps blood around the body."
+    },
 
-{
-question: "What is H₂O?",
-answers: ["Water", "Oxygen", "Salt", "Hydrogen"],
-correct: "Water"
-},
+    {
+        question: "What do humans breathe in?",
+        answers: ["Oxygen", "Carbon dioxide"],
+        correct: "Oxygen",
+        explanation: "Humans breathe in oxygen, which the body needs for respiration."
+    },
 
-{
-question: "Which organ pumps blood around the body?",
-answers: ["Heart", "Lung", "Brain", "Stomach"],
-correct: "Heart"
-},
+    {
+        question: "Which is a source of light?",
+        answers: ["Sun", "Moon"],
+        correct: "Sun",
+        explanation: "The Sun produces its own light. The Moon reflects sunlight."
+    },
 
-{
-question: "What force pulls objects toward Earth?",
-answers: ["Gravity", "Magnetism", "Friction", "Sound"],
-correct: "Gravity"
-}
+    {
+        question: "Water freezes at what temperature?",
+        answers: ["0°C", "100°C"],
+        correct: "0°C",
+        explanation: "Pure water freezes at 0 degrees Celsius under normal conditions."
+    }
 
 ];
 
 
-let scienceIndex = 0;
+const frenchQuestions = [
 
-let scienceScoreValue = 0;
+    {
+        question: "What does 'bonjour' mean?",
+        answers: ["Hello", "Goodbye"],
+        correct: "Hello",
+        explanation: "Bonjour means hello or good day in French."
+    },
 
+    {
+        question: "What does 'chat' mean?",
+        answers: ["Cat", "Dog"],
+        correct: "Cat",
+        explanation: "Chat means cat in French."
+    },
 
-function startScience() {
+    {
+        question: "What does 'rouge' mean?",
+        answers: ["Red", "Blue"],
+        correct: "Red",
+        explanation: "Rouge means red in French."
+    },
 
-    scienceIndex = 0;
+    {
+        question: "What does 'merci' mean?",
+        answers: ["Thank you", "Please"],
+        correct: "Thank you",
+        explanation: "Merci means thank you."
+    },
 
-    scienceScoreValue = 0;
-
-    document.getElementById("scienceScore").textContent =
-        "Score: 0";
-
-    showGame("scienceGame");
-
-    showScienceQuestion();
-
-}
-
-
-function showScienceQuestion() {
-
-    let q =
-        scienceQuestions[scienceIndex];
-
-    document.getElementById("scienceQuestion").textContent =
-        q.question;
-
-    document.getElementById("scienceResult").textContent = "";
-
-    let area =
-        document.getElementById("scienceAnswers");
-
-    area.innerHTML = "";
-
-
-    q.answers.forEach(function(answer) {
-
-        let button =
-            document.createElement("button");
-
-        button.className = "answer-button";
-
-        button.textContent = answer;
-
-        button.onclick = function() {
-
-            checkScience(answer);
-
-        };
-
-        area.appendChild(button);
-
-    });
-
-}
-
-
-function checkScience(answer) {
-
-    let correct =
-        scienceQuestions[scienceIndex].correct;
-
-
-    if (answer === correct) {
-
-        scienceScoreValue++;
-
-        document.getElementById("scienceResult").textContent =
-            "🎉 Correct!";
-
+    {
+        question: "What does 'livre' mean?",
+        answers: ["Book", "Chair"],
+        correct: "Book",
+        explanation: "Livre means book in French."
     }
-
-    else {
-
-        document.getElementById("scienceResult").textContent =
-            "❌ The correct answer was " + correct;
-
-    }
-
-
-    document.getElementById("scienceScore").textContent =
-        "Score: " + scienceScoreValue;
-
-
-    scienceIndex++;
-
-
-    if (scienceIndex >= scienceQuestions.length) {
-
-        setTimeout(function() {
-
-            alert(
-                "🎉 Science Quiz complete! You scored " +
-                scienceScoreValue +
-                " out of " +
-                scienceQuestions.length +
-                "!"
-            );
-
-            closeGame();
-
-        }, 700);
-
-    }
-
-    else {
-
-        setTimeout(showScienceQuestion, 700);
-
-    }
-
-}
-
-
-/* =====================================
-   WORLD QUIZ
-===================================== */
-
-const worldQuestions = [
-
-{
-question: "What is the capital city of France?",
-answers: ["Paris", "London", "Rome", "Madrid"],
-correct: "Paris"
-},
-
-{
-question: "Which is the largest ocean?",
-answers: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
-correct: "Pacific Ocean"
-},
-
-{
-question: "Which continent is Egypt in?",
-answers: ["Africa", "Europe", "Asia", "South America"],
-correct: "Africa"
-},
-
-{
-question: "What is the largest country by land area?",
-answers: ["Russia", "Canada", "China", "Brazil"],
-correct: "Russia"
-},
-
-{
-question: "Which country is famous for the pyramids of Giza?",
-answers: ["Egypt", "Greece", "Mexico", "Italy"],
-correct: "Egypt"
-}
 
 ];
 
 
-let worldIndex = 0;
+/* =========================================================
+   HARDER LEVEL QUESTIONS
+========================================================= */
 
-let worldScoreValue = 0;
+const harderMathQuestions = [
+
+    {
+        question: "What is 24 × 3?",
+        answers: ["72", "62"],
+        correct: "72",
+        explanation: "24 × 3 means 24 + 24 + 24 = 72."
+    },
+
+    {
+        question: "What is 144 ÷ 12?",
+        answers: ["12", "14"],
+        correct: "12",
+        explanation: "12 × 12 = 144, so 144 ÷ 12 = 12."
+    },
+
+    {
+        question: "What is 75 + 48?",
+        answers: ["123", "113"],
+        correct: "123",
+        explanation: "75 + 40 = 115. Then add 8: 115 + 8 = 123."
+    },
+
+    {
+        question: "What is 100 − 47?",
+        answers: ["53", "63"],
+        correct: "53",
+        explanation: "100 − 40 = 60. Then 60 − 7 = 53."
+    },
+
+    {
+        question: "What is 15 × 6?",
+        answers: ["90", "80"],
+        correct: "90",
+        explanation: "15 × 6 is 90 because 10 × 6 is 60 and 5 × 6 is 30. 60 + 30 = 90."
+    }
+
+];
 
 
-function startWorld() {
+/* =========================================================
+   GAME ENGINE
+========================================================= */
 
-    worldIndex = 0;
+let currentGame = "";
+let currentQuestions = [];
+let currentQuestionIndex = 0;
+let wrongAttempts = 0;
+let answered = false;
 
-    worldScoreValue = 0;
+function startGame(type) {
 
-    document.getElementById("worldScore").textContent =
-        "Score: 0";
+    currentGame = type;
 
-    showGame("worldGame");
+    if (type === "math") {
 
-    showWorldQuestion();
+        currentQuestions =
+            level >= 2
+            ? [...harderMathQuestions]
+            : [...mathQuestions];
 
+    }
+
+    else if (type === "englishQuiz") {
+        currentQuestions = [...englishQuestions];
+    }
+
+    else if (type === "scienceQuiz") {
+        currentQuestions = [...scienceQuestions];
+    }
+
+    else if (type === "frenchQuiz") {
+        currentQuestions = [...frenchQuestions];
+    }
+
+    currentQuestionIndex = 0;
+    wrongAttempts = 0;
+    answered = false;
+
+    hideAllSections();
+
+    document.getElementById("gameScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("explanation")
+        .classList.add("hidden");
+
+    document.getElementById("nextButton")
+        .classList.add("hidden");
+
+    loadQuestion();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-function showWorldQuestion() {
+function loadQuestion() {
 
-    let q =
-        worldQuestions[worldIndex];
+    if (currentQuestionIndex >= currentQuestions.length) {
 
-    document.getElementById("worldQuestion").textContent =
+        currentQuestionIndex = 0;
+
+        currentQuestions.sort(() => Math.random() - 0.5);
+    }
+
+    const q = currentQuestions[currentQuestionIndex];
+
+    wrongAttempts = 0;
+    answered = false;
+
+    document.getElementById("question").textContent =
         q.question;
 
-    document.getElementById("worldResult").textContent = "";
+    document.getElementById("feedback").textContent = "";
 
-    let area =
-        document.getElementById("worldAnswers");
+    document.getElementById("explanation").classList.add("hidden");
 
-    area.innerHTML = "";
+    document.getElementById("nextButton").classList.add("hidden");
 
+    const answers =
+        document.getElementById("answers");
 
-    q.answers.forEach(function(answer) {
+    answers.innerHTML = "";
 
-        let button =
+    const shuffled = [...q.answers]
+        .sort(() => Math.random() - 0.5);
+
+    shuffled.forEach(answer => {
+
+        const button =
             document.createElement("button");
 
-        button.className = "answer-button";
+        button.className = "answer-btn";
 
         button.textContent = answer;
 
         button.onclick = function() {
-
-            checkWorld(answer);
-
+            checkAnswer(button, answer);
         };
 
-        area.appendChild(button);
+        answers.appendChild(button);
 
     });
 
+    document.getElementById("gameTitle").textContent =
+        getGameTitle();
+
+    updateStats();
+
+    const progress =
+        ((currentQuestionIndex + 1) /
+        currentQuestions.length) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
 }
 
 
-function checkWorld(answer) {
+function getGameTitle() {
 
-    let correct =
-        worldQuestions[worldIndex].correct;
-
-
-    if (answer === correct) {
-
-        worldScoreValue++;
-
-        document.getElementById("worldResult").textContent =
-            "🎉 Correct!";
-
+    if (currentGame === "math") {
+        return "🧮 Maths Challenge";
     }
 
-    else {
-
-        document.getElementById("worldResult").textContent =
-            "❌ The correct answer was " + correct;
-
+    if (currentGame === "englishQuiz") {
+        return "📖 English Challenge";
     }
 
+    if (currentGame === "scienceQuiz") {
+        return "🔬 Science Challenge";
+    }
 
-    document.getElementById("worldScore").textContent =
-        "Score: " + worldScoreValue;
+    if (currentGame === "frenchQuiz") {
+        return "🇫🇷 French Challenge";
+    }
+
+    return "Challenge";
+}
 
 
-    worldIndex++;
+function checkAnswer(button, selectedAnswer) {
 
+    if (answered) {
+        return;
+    }
 
-    if (worldIndex >= worldQuestions.length) {
+    const q = currentQuestions[currentQuestionIndex];
 
-        setTimeout(function() {
+    if (selectedAnswer === q.correct) {
 
-            alert(
-                "🎉 World Quiz complete! You scored " +
-                worldScoreValue +
-                " out of " +
-                worldQuestions.length +
-                "!"
-            );
+        answered = true;
 
-            closeGame();
+        button.classList.add("correct");
 
+        score++;
+        streak++;
+
+        saveProgress();
+        updateStats();
+
+        document.body.classList.add("correct-flash");
+
+        setTimeout(() => {
+            document.body.classList.remove("correct-flash");
         }, 700);
 
+        speak(
+            "Correct! " +
+            q.correct +
+            ". " +
+            q.explanation
+        );
+
+        document.getElementById("feedback").textContent =
+            "✅ Correct! Great job!";
+
+        createConfetti();
+
+        if (streak >= stickerGoal) {
+
+            giveSticker();
+
+            streak = 0;
+
+            saveProgress();
+
+            updateStats();
+        }
+
+        setTimeout(() => {
+
+            currentQuestionIndex++;
+
+            loadQuestion();
+
+        }, 2300);
+
     }
 
     else {
 
-        setTimeout(showWorldQuestion, 700);
+        wrongAttempts++;
+
+        button.classList.add("wrong");
+
+        const x =
+            document.createElement("span");
+
+        x.className = "x-mark";
+
+        x.textContent = "✕";
+
+        button.appendChild(x);
+
+        button.disabled = true;
+
+        streak = 0;
+
+        saveProgress();
+
+        updateStats();
+
+        document.body.classList.add("wrong-flash");
+
+        setTimeout(() => {
+            document.body.classList.remove("wrong-flash");
+        }, 500);
+
+        speak("That answer is not correct. Try the other box.");
+
+        document.getElementById("feedback").textContent =
+            "❌ Not quite. Try the other answer.";
+
+        if (wrongAttempts >= 2) {
+
+            showCorrectAnswer(q);
+
+        }
 
     }
 
 }
 
 
-/* =====================================
-   VIDEOS
-===================================== */
+function showCorrectAnswer(q) {
 
-function videoMessage(subject) {
+    answered = true;
 
-    alert(
-        subject +
-        " learning videos will be added soon! 🎬"
+    const explanation =
+        document.getElementById("explanation");
+
+    explanation.innerHTML =
+        "<h3>💡 Let's learn it!</h3>" +
+        "<p><strong>Correct answer:</strong> " +
+        escapeHTML(q.correct) +
+        "</p>" +
+        "<p>" +
+        escapeHTML(q.explanation) +
+        "</p>";
+
+    explanation.classList.remove("hidden");
+
+    document.getElementById("feedback").textContent =
+        "The correct answer is " + q.correct + ".";
+
+    document.getElementById("nextButton")
+        .classList.remove("hidden");
+
+    speak(
+        "The correct answer is " +
+        q.correct +
+        ". " +
+        q.explanation
+    );
+}
+
+
+function nextQuestion() {
+
+    currentQuestionIndex++;
+
+    loadQuestion();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   STICKER SYSTEM
+========================================================= */
+
+const stickerTypes = [
+    "⭐",
+    "🌟",
+    "🏆",
+    "🎉",
+    "🚀",
+    "🦁",
+    "🐼",
+    "🦄",
+    "🌈",
+    "🔥"
+];
+
+function giveSticker() {
+
+    stickerCount++;
+
+    stickersSinceUpgrade++;
+
+    saveProgress();
+
+    updateStats();
+
+    createSticker();
+
+    speak(
+        "Amazing! You earned a sticker!"
     );
 
+    createConfetti();
+
+    if (stickersSinceUpgrade >= 5) {
+
+        stickersSinceUpgrade = 0;
+
+        stickerGoal += 5;
+
+        level++;
+
+        saveProgress();
+
+        setTimeout(() => {
+
+            speak(
+                "Fantastic! You collected five stickers. " +
+                "Your next challenge is harder. " +
+                "You now need " +
+                stickerGoal +
+                " correct answers in a row for your next sticker."
+            );
+
+            alert(
+                "🎉 LEVEL UP! 🎉\n\n" +
+                "You collected 5 stickers!\n\n" +
+                "You are now on Level " +
+                level +
+                "!"
+            );
+
+            updateStats();
+
+        }, 1200);
+    }
 }
+
+
+function createSticker() {
+
+    const layer =
+        document.getElementById("stickerLayer");
+
+    const sticker =
+        document.createElement("div");
+
+    sticker.className = "sticker";
+
+    sticker.textContent =
+        stickerTypes[
+            Math.floor(Math.random() * stickerTypes.length)
+        ];
+
+    const maxX =
+        Math.max(20, window.innerWidth - 80);
+
+    const maxY =
+        Math.max(80, window.innerHeight - 100);
+
+    sticker.style.left =
+        Math.random() * maxX + "px";
+
+    sticker.style.top =
+        Math.random() * maxY + "px";
+
+    layer.appendChild(sticker);
+
+    makeDraggable(sticker);
+}
+
+
+function makeDraggable(element) {
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    element.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            dragging = true;
+
+            const rect =
+                element.getBoundingClientRect();
+
+            offsetX =
+                event.clientX - rect.left;
+
+            offsetY =
+                event.clientY - rect.top;
+
+            element.setPointerCapture(event.pointerId);
+
+        }
+    );
+
+    element.addEventListener(
+        "pointermove",
+        function(event) {
+
+            if (!dragging) {
+                return;
+            }
+
+            let x =
+                event.clientX - offsetX;
+
+            let y =
+                event.clientY - offsetY;
+
+            x = Math.max(
+                0,
+                Math.min(
+                    window.innerWidth - element.offsetWidth,
+                    x
+                )
+            );
+
+            y = Math.max(
+                0,
+                Math.min(
+                    window.innerHeight - element.offsetHeight,
+                    y
+                )
+            );
+
+            element.style.left = x + "px";
+            element.style.top = y + "px";
+
+        }
+    );
+
+    element.addEventListener(
+        "pointerup",
+        function() {
+            dragging = false;
+        }
+    );
+
+    element.addEventListener(
+        "pointercancel",
+        function() {
+            dragging = false;
+        }
+    );
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function createConfetti() {
+
+    const pieces = ["🎉", "⭐", "✨", "🎊"];
+
+    for (let i = 0; i < 15; i++) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.textContent =
+            pieces[
+                Math.floor(Math.random() * pieces.length)
+            ];
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.animationDuration =
+            (1 + Math.random()) + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 2000);
+    }
+}
+
+
+/* =========================================================
+   LEARNING LESSONS
+========================================================= */
+
+const lessons = {
+
+    english: [
+
+        {
+            picture: "📖",
+            text:
+            "Welcome to English! Today we are learning about nouns. A noun is a word that names a person, place, animal or thing."
+        },
+
+        {
+            picture: "👦",
+            text:
+            "Look at the boy. The word boy is a noun because it names a person."
+        },
+
+        {
+            picture: "🏫",
+            text:
+            "Look at the school. School is a noun because it names a place."
+        },
+
+        {
+            picture: "🐶",
+            text:
+            "Dog is also a noun. It names an animal."
+        },
+
+        {
+            picture: "⚽",
+            text:
+            "Ball is a noun because it names a thing. So remember: nouns name people, places, animals and things."
+        }
+
+    ],
+
+    french: [
+
+        {
+            picture: "🇫🇷",
+            text:
+            "Bonjour! Welcome to French. Today we will learn some simple French words."
+        },
+
+        {
+            picture: "👋",
+            text:
+            "Bonjour means hello or good day. We use it when greeting someone."
+        },
+
+        {
+            picture: "🙏",
+            text:
+            "Merci means thank you. It is a polite word."
+        },
+
+        {
+            picture: "🐱",
+            text:
+            "Chat means cat in French."
+        },
+
+        {
+            picture: "📖",
+            text:
+            "Livre means book. You can use these words when speaking simple French."
+        }
+
+    ],
+
+    math: [
+
+        {
+            picture: "➕",
+            text:
+            "Welcome to Maths! Today we will learn how to add numbers."
+        },
+
+        {
+            picture: "🔢",
+            text:
+            "Let's calculate 7 + 5. Start with 7 and count five more: 8, 9, 10, 11, 12."
+        },
+
+        {
+            picture: "🧮",
+            text:
+            "Therefore, 7 + 5 = 12. Addition means putting amounts together."
+        },
+
+        {
+            picture: "⭐",
+            text:
+            "Try another one. If you have 3 stars and get 2 more, you have 5 stars."
+        },
+
+        {
+            picture: "🏆",
+            text:
+            "Remember: when we add, we combine amounts to find the total."
+        }
+
+    ],
+
+    science: [
+
+        {
+            picture: "🌱",
+            text:
+            "Welcome to Science! Today we will learn about plants."
+        },
+
+        {
+            picture: "🌱💧",
+            text:
+            "Plants need water to live and grow. Their roots take water from the soil."
+        },
+
+        {
+            picture: "☀️🌱",
+            text:
+            "Plants also need light. The Sun provides light that plants use to make food."
+        },
+
+        {
+            picture: "🌿",
+            text:
+            "Leaves help plants make food using sunlight, water and carbon dioxide."
+        },
+
+        {
+            picture: "🌳",
+            text:
+            "So remember: plants need water, light, carbon dioxide and suitable conditions to grow."
+        }
+
+    ]
+
+};
+
+let currentLesson = [];
+let currentLessonIndex = 0;
+let currentLessonType = "";
+
+
+function openLesson(type) {
+
+    currentLessonType = type;
+
+    currentLesson = lessons[type];
+
+    currentLessonIndex = 0;
+
+    hideAllSections();
+
+    document.getElementById("lessonScreen")
+        .classList.remove("hidden");
+
+    displayLessonPage();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function displayLessonPage() {
+
+    const page =
+        currentLesson[currentLessonIndex];
+
+    document.getElementById("lessonTitle")
+        .textContent =
+        getLessonTitle();
+
+    document.getElementById("lessonPicture")
+        .textContent =
+        page.picture;
+
+    document.getElementById("lessonText")
+        .textContent =
+        page.text;
+
+    document.getElementById("lessonPage")
+        .textContent =
+        (currentLessonIndex + 1) +
+        " / " +
+        currentLesson.length;
+}
+
+
+function getLessonTitle() {
+
+    if (currentLessonType === "english") {
+        return "📖 English Storybook";
+    }
+
+    if (currentLessonType === "french") {
+        return "🇫🇷 French Storybook";
+    }
+
+    if (currentLessonType === "math") {
+        return "🧮 Maths Lesson";
+    }
+
+    if (currentLessonType === "science") {
+        return "🔬 Science Explorer";
+    }
+
+    return "Lesson";
+}
+
+
+function speakLesson() {
+
+    const page =
+        currentLesson[currentLessonIndex];
+
+    speak(page.text);
+}
+
+
+function nextLessonPage() {
+
+    if (
+        currentLessonIndex <
+        currentLesson.length - 1
+    ) {
+
+        currentLessonIndex++;
+
+        displayLessonPage();
+
+        speakLesson();
+
+    }
+
+    else {
+
+        speak(
+            "Well done! You finished this lesson."
+        );
+
+        createConfetti();
+    }
+}
+
+
+function previousLessonPage() {
+
+    if (currentLessonIndex > 0) {
+
+        currentLessonIndex--;
+
+        displayLessonPage();
+
+        speakLesson();
+    }
+}
+
+
+/* =========================================================
+   SAFETY FOR DISPLAYED TEXT
+========================================================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+updateStats();
 
 </script>
 
